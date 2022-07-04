@@ -20,6 +20,7 @@ using namespace std;
 using namespace Eigen;
 double voxel_size;
 
+// voxel position's value
 void cut_voxel(unordered_map<VOXEL_LOC, OCTO_TREE*>& feature_map,
                pcl::PointCloud<PointType>::Ptr feature_pts,
                Eigen::Quaterniond q, Eigen::Vector3d t, int f_head, int capacity) {
@@ -72,7 +73,7 @@ int main(int argc, char** argv) {
     nh.getParam("base_lidar", base_lidar);
     nh.getParam("voxel_size", voxel_size);
     nh.getParam("downsmp_sz_base", downsmp_sz_base);
-
+    // base pose - in advance from such as LOAM,
     sensor_msgs::PointCloud2 debugMsg, colorCloudMsg;
     vector<mypcl::pose> pose_vec = mypcl::read_pose(data_path + "original_pose/" +
                                                     to_string(base_lidar) + ".json");
